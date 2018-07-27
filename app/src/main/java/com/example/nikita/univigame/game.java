@@ -46,13 +46,12 @@ public class game extends AppCompatActivity implements RewardedVideoAdListener {
     private SQLiteDatabase mDb;
     Button otv1, otv2, otv3, otv4, button3, button6;
     ArrayList<class_spis_vsego> spisokvsego;
-    int lengtht, record = 0;
+    int lengtht;
     ImageView imageView;
     TextView textView, textView2;
     game tekactiviti;
     LinearLayout linearLayout;
     private RewardedVideoAd mRewardedVideoAd;
-    int energiya;
     int random_vopt_btn;
     int money, score, level;
 
@@ -107,7 +106,7 @@ public class game extends AppCompatActivity implements RewardedVideoAdListener {
                 otvnvibor(4, r);
             }
         });
-       button3.setOnClickListener(new View.OnClickListener() {
+        button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View r) {
                 onBackPressed();
             }
@@ -194,7 +193,7 @@ public class game extends AppCompatActivity implements RewardedVideoAdListener {
         }
         cursor.close();
 
-
+      //  ubratb_1nepr();
     }
 
     void load_new_vopr() {
@@ -219,6 +218,10 @@ public class game extends AppCompatActivity implements RewardedVideoAdListener {
 
 
         // Log.d("asdasd", "" + varianti[0] + " " + varianti[1] + " " + varianti[2] + " " + varianti[3]);
+        otv1.setEnabled(true);
+        otv2.setEnabled(true);
+        otv3.setEnabled(true);
+        otv4.setEnabled(true);
 
 
         otv1.setText(spisokvsego.get(varianti[0]).nazv);
@@ -235,47 +238,101 @@ public class game extends AppCompatActivity implements RewardedVideoAdListener {
 
     }
 
-    boolean prav = false;
 
     void otvnvibor(int nombtn, View r) {
 
 
-        prav = false;
+        boolean prav = false;
         switch (nombtn) {
             case 1:
-                if (((class_spis_vsego) otv1.getTag()).id == spisokvsego.get(level).id) prav = true;
+                if (((class_spis_vsego) otv1.getTag()).id == spisokvsego.get(level).id) {
+                    prav = true;
+                    enabled_btn_otv(0);
+                }
                 break;
             case 2:
-                if (((class_spis_vsego) otv2.getTag()).id == spisokvsego.get(level).id) prav = true;
+                if (((class_spis_vsego) otv2.getTag()).id == spisokvsego.get(level).id)  {
+                    prav = true;
+                    enabled_btn_otv(1);
+                }
                 break;
             case 3:
-                if (((class_spis_vsego) otv3.getTag()).id == spisokvsego.get(level).id) prav = true;
+                if (((class_spis_vsego) otv3.getTag()).id == spisokvsego.get(level).id) {
+                    prav = true;
+                    enabled_btn_otv(2);
+                }
                 break;
             case 4:
-                if (((class_spis_vsego) otv4.getTag()).id == spisokvsego.get(level).id) prav = true;
+                if (((class_spis_vsego) otv4.getTag()).id == spisokvsego.get(level).id)  {
+                    prav = true;
+                    enabled_btn_otv(3);
+                }
                 break;
         }
 
 
-        sobit_prav();
-
-
-    }
-
-
-    void sobit_prav() {
 
 
         if (prav) {
             mDb.execSQL("UPDATE `records` SET score=score+10, level=level+1");
             load_new_vopr();
+
+
         } else {
             mDb.execSQL("UPDATE `records` SET money=money-10");
             get_money();
+
         }
 
     }
 
+
+    boolean[]  btn_enabl={true,true,true,true};
+    void enabled_btn_otv(int nomen){
+        btn_enabl[nomen]=false;
+
+        otv1.setEnabled(btn_enabl[0]);
+        otv2.setEnabled(btn_enabl[1]);
+        otv3.setEnabled(btn_enabl[2]);
+        otv4.setEnabled(btn_enabl[3]);
+ }
+
+
+    public void ubratb_1nepr() {
+        boolean stop = true;
+        while (stop) {
+            int randomn = (int) (Math.random() * 3);
+            switch (randomn) {
+                case 0:
+                    if (randomn != random_vopt_btn && otv1.isEnabled()){
+                        stop = false;
+                        otv1.setEnabled(false);
+                    }
+                    break;
+                case 1:
+                    if (randomn != random_vopt_btn && otv2.isEnabled()){
+                        stop = false;
+                        otv2.setEnabled(false);
+                    }
+                    break;
+                case 2:
+                    if (randomn != random_vopt_btn && otv3.isEnabled()){
+                        stop = false;
+                        otv3.setEnabled(false);
+                    }
+                    break;
+                case 3:
+                    if (randomn != random_vopt_btn && otv4.isEnabled()) {
+                        stop = false;
+                        otv4.setEnabled(false);
+                    }
+                    break;
+            }
+
+        }
+
+
+    }
 
     private void loadRewardedVideoAd() {
         mRewardedVideoAd.loadAd("ca-app-pub-3318198202821312/2922521904",

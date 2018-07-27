@@ -8,14 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class CustomDialog1 implements OnClickListener{
+public class CustomDialog1  {
     private EditText dialogEditBox;
     private TextView dialogInfo;
     private Button dialogButton,button2,button4;
     private Dialog dialog;
-    private Activity activity;
+    private game activity;
 
-    public CustomDialog1( Activity activity ){
+    public CustomDialog1( game activity ){
         this.activity = activity;
         init();
     }
@@ -37,7 +37,12 @@ public class CustomDialog1 implements OnClickListener{
                 dialog.dismiss();
             }
         });
-
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View r) {
+                activity.ubratb_1nepr();
+                dialog.dismiss();
+            }
+        });
 
     }
 
@@ -46,8 +51,6 @@ public class CustomDialog1 implements OnClickListener{
     }
 
 
-    @Override
-    public void onClick(View v) {
 
-    }
+
 }
