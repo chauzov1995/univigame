@@ -107,7 +107,7 @@ public class game extends AppCompatActivity implements RewardedVideoAdListener {
                 otvnvibor(4, r);
             }
         });
-        button3.setOnClickListener(new View.OnClickListener() {
+       button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View r) {
                 onBackPressed();
             }
