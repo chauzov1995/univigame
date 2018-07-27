@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\!qwerty\univigame\univigame\app\src\main\assets"><file name="3CadBase.sqlite" path="C:\!qwerty\univigame\univigame\app\src\main\assets\3CadBase.sqlite"/></source><source path="C:\!qwerty\univigame\univigame\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\!qwerty\univigame\univigame\app\src\debug\assets"/></dataSet></merger>

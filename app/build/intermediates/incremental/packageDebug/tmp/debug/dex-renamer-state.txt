@@ -1,0 +1,10 @@
+#Thu Jul 26 13:10:49 MSK 2018
+path.2=classes.dex
+path.1=classes.dex
+path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.2=C\:\\\!qwerty\\univigame\\univigame\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14
+base.1=C\:\\\!qwerty\\univigame\\univigame\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
+base.0=C\:\\\!qwerty\\univigame\\univigame\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
